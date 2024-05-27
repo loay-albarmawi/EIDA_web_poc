@@ -8,10 +8,7 @@ class InteropJS {
       var script = document.createElement('script');
       var script = document.createElement('script');
       script.src = 'assets/toolkit_sample.js';
-      script.onload = function() {
-        console.log('Script loaded');
-        Initialize();
-      };
+      
       document.body.appendChild(script);
 
       var script2 = document.createElement('script');
@@ -25,6 +22,9 @@ class InteropJS {
       script.onload = function() {
         console.log('Script loaded');
         Initialize();
+                registerDevice();
+        DisplayPublicData();
+
       };
       document.body.appendChild(script);
     '''

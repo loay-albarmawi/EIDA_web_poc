@@ -109,7 +109,7 @@ var closeHandlerCB = function (response) {
  */
 var onOpenHandlerCB = function (response, error) {
   // hideLoader();
-  log("onOpenHandlerCB : " + response);
+  console.log("onOpenHandlerCB : ");
   if (error === null) {
     /**
      * call the list reader function and pass listReaderCB to be executed
@@ -214,6 +214,8 @@ var getInterfaceCB = function (response, error) {
  */
 function Initialize() {
   try {
+    console.log("onOpenHandlerCB : ");
+
     /* Ensures only one connection is open at a time */
     if (ToolkitOB !== null) {
       /*  enable all buttons  */
@@ -227,6 +229,8 @@ function Initialize() {
     /*  if
 		 provide the call backs */
     showLoader();
+    console.log("making tk : ");
+
     ToolkitOB = new Toolkit(
       onOpenHandlerCB /* reference to onOpen call back function */,
       closeHandlerCB /* reference to onClose call back function */,
@@ -235,6 +239,8 @@ function Initialize() {
     );
     displayProgress("Initializing Web Socket ...");
   } catch (e) {
+    console.log("testest" + e);
+
     // hideLoader();
     alert("Webcomponent Initialization Failed, Details: " + e);
   }
