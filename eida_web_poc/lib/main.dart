@@ -58,6 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 setState(() {
                   text = 'Register Device Button Pressed';
+                  InteropJS().registerDevice("1234567890");
                 });
               },
               child: const Text('Register Device'),
@@ -66,6 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: () {
                 setState(() {
+                  InteropJS().scanID();
+
                   text = 'Scan ID Button Pressed';
                 });
               },
