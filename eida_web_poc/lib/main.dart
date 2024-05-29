@@ -1,5 +1,10 @@
+import 'dart:convert';
+import 'dart:developer';
+import 'dart:html' as html;
+
 import 'package:eida_web_poc/interop_js.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,6 +37,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String text = "";
+  String imageBase64 = "";
+
+  void onImageUpload(html.Event event) {
+    final file = (event.target as html.FileUploadInputElement).files!.first;
+    final reader = html.FileReader();
+
+    reader.readAsDataUrl(file);
+    reader.onLoadEnd.listen((event) {
+      setState(() {
+        imageBase64 = reader.result as String;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +91,37 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               },
               child: const Text('Scan ID'),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                final uploadInput = html.FileUploadInputElement();
+                uploadInput.accept = 'image/*';
+                uploadInput.click();
+
+                uploadInput.onChange.listen(onImageUpload);
+              },
+              child: const Text('Upload Image'),
+            ),
+            Visibility(
+              visible: imageBase64.isNotEmpty,
+              child: ElevatedButton(
+                onPressed: () async {
+                  String s = await scanRegula(imageBase64);
+                  setState(() {
+                    List<dynamic> fieldList =
+                        jsonDecode(s)['text']['fieldList'];
+                    Map<String, dynamic> keyPairValues = {};
+                    for (var json in fieldList) {
+                      String fieldName = json['fieldName'];
+                      dynamic value = json['value'];
+                      keyPairValues[fieldName] = value;
+                    }
+                    text = keyPairValues.toString();
+                  });
+                },
+                child: const Text('Scan regula'),
+              ),
             ),
             const SizedBox(height: 16),
             Text(
