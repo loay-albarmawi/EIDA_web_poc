@@ -23,7 +23,6 @@ class InteropJS {
       script.onload = function() {
         console.log('Script loaded');
         Initialize();
-                registerDevice();
         DisplayPublicData();
 
       };
