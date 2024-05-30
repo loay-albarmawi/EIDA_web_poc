@@ -1130,8 +1130,7 @@ function changeButtonState(flag) {
  * This function is to display progress in progress box.
  */
 function displayProgress(msg) {
-  msg = msg + "\n" + document.getElementById("prgssText").value;
-  document.getElementById("prgssText").value = msg;
+  console.log(msg);
 }
 /**
  * This function is to show unblock pin div
