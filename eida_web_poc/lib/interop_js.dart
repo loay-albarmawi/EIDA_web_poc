@@ -5,11 +5,7 @@ class InteropJS {
     js.context.callMethod('eval', [
       '''
 
-      var script = document.createElement('script');
-      var script = document.createElement('script');
-      script.src = 'assets/toolkit_sample.js';
-      
-      document.body.appendChild(script);
+
 
       var script2 = document.createElement('script');
       script2.src = 'assets/eidatoolkit.js';
@@ -17,7 +13,12 @@ class InteropJS {
         console.log('Another script loaded');
         // Additional code to execute after the script is loaded
       };
-      document.body.appendChild(script2);
+            var script = document.createElement('script');
+      var script = document.createElement('script');
+      script.src = 'assets/toolkit_sample.js';
+            document.body.appendChild(script2);
+
+      document.body.appendChild(script);
       script.src = 'assets/toolkit_sample.js';
       script.onload = function() {
         console.log('Script loaded');
