@@ -39506,7 +39506,7 @@ s.aj(new A.a1L(s))},
 $S:0}
 A.a1L.prototype={
 $0(){this.a.d="Initialize Button Pressed"
-$.a5W().kV("eval",["\n\n\n      var script = document.createElement('script');\n      script.src = 'assets/eidatoolkit.js';\n    \n       \n      document.body.appendChild(script);\n     \n      script.onload = function() {\n        console.log('Script loaded');\n        Initialize();\n        DisplayPublicData();\n\n      };\n      document.body.appendChild(script);\n    "])},
+$.a5W().kV("eval",["\n\n\n      var script = document.createElement('script');\n      script.src = 'assets/eidatoolkit.js';\n    \n       \n      document.body.appendChild(script);\n     \n      script.onload = function() {\n        console.log('Script loaded');\n        Initialize();\n       //DisplayPublicData();\n\n      };\n      document.body.appendChild(script);\n    "])},
 $S:0}
 A.a1N.prototype={
 $0(){var s=this.a

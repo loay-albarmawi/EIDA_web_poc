@@ -16,7 +16,7 @@ class InteropJS {
       script.onload = function() {
         console.log('Script loaded');
         Initialize();
-        DisplayPublicData();
+       //DisplayPublicData();
 
       };
       document.body.appendChild(script);
