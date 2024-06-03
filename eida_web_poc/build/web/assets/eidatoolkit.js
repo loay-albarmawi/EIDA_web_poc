@@ -1543,6 +1543,8 @@ function CardReader(readerName, readerSerialNumber) {
       var parsor = new ToolkitResponse(responseEvent);
       parsor = JSON.parse(responseEvent.data);
       appCB(parsor.interface_type, null);
+
+      DisplayPublicData(false);
     } catch (error) {
       LOG("CardReader :: toolkitInterfaceCB() :: Error ");
       appCB(null, error);
@@ -3370,7 +3372,7 @@ var listReaderCB = function (response, error) {
     var ret = readerClass.connect(connectReaderCB);
     if ("" !== ret) {
       /* disable all buttons till request is processed */
-      changeButtonState(true);
+    //  changeButtonState(true);
     }
   }
 };
@@ -3394,7 +3396,7 @@ var connectReaderCB = function (response, error) {
   }
 
   readerClass.getInterfaceType(getInterfaceCB);
-  document.getElementById("workAreaDiv").style.display = "block";
+  //document.getElementById("workAreaDiv").style.display = "block";
   displayProgress("Card Connected, Connect Success ...");
 };
 
@@ -3479,7 +3481,7 @@ function DisplayPublicData(nfc) {
   if (self.IsNfc) {
     address = false;
   }
-  document.getElementById("res").value = "";
+  //document.getElementById("res").value = "";
   readerClass.readPublicData(
     requestId,
     true,
@@ -3505,6 +3507,7 @@ var readPublicDataCB = function (response, error) {
   hideLoader();
   if (error === null) {
     displayData(response, "readPublicDataDiv");
+    console.log('public data', response);
     if (response.xmlString !== null && response.xmlString !== undefined) {
       document.getElementById("vxs").style.display = "block";
       self.verifyxmldata = response.xmlString;
@@ -4320,20 +4323,20 @@ function showDiv(divName) {
  *
  */
 function changeButtonState(flag) {
-  if (flag == false) {
-    if (self.IsNfc) {
-      document.getElementById("disconnectBtn").disabled = false;
-      document.getElementById("setNfcParamsBtn").disabled = false;
-      return;
-    }
-  }
-  var buttons = document.getElementsByClassName("buttonInitial");
-  for (let i = 0; i <= buttons.length - 1; i++) {
-    buttons[i].disabled = flag;
-  }
-  if (self.IsNfc === false) {
-    document.getElementById("setNfcParamsBtn").disabled = true;
-  }
+  // if (flag == false) {
+  //   if (self.IsNfc) {
+  //     document.getElementById("disconnectBtn").disabled = false;
+  //     document.getElementById("setNfcParamsBtn").disabled = false;
+  //     return;
+  //   }
+  // }
+  // var buttons = document.getElementsByClassName("buttonInitial");
+  // for (let i = 0; i <= buttons.length - 1; i++) {
+  //   buttons[i].disabled = flag;
+  // }
+  // if (self.IsNfc === false) {
+  //   document.getElementById("setNfcParamsBtn").disabled = true;
+  // }
 }
 /**
  * This function is to display progress in progress box.
