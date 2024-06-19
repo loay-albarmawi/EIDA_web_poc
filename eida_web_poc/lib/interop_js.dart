@@ -16,11 +16,7 @@ class InteropJS {
       script.onload = function() {
         console.log('Script loaded');
         Initialize();
-        setTimeout(() => {
-    console.log('Function called after 2000 milliseconds');
-           DisplayPublicData();
-
-}, 2000);
+       DisplayPublicData();
 
       };
       document.body.appendChild(script);
