@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 setState(() {
                   text = 'Initialize Button Pressed';
-                  InteropJS().initialize();
+                 text= InteropJS().initialize();
                 });
               },
               child: const Text('Initialize'),

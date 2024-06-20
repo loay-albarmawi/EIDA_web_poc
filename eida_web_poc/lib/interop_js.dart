@@ -1,8 +1,8 @@
 import 'dart:js' as js;
 
 class InteropJS {
-  void initialize() {
-    js.context.callMethod('eval', [
+  String initialize() {
+   return js.context.callMethod('eval', [
       '''
 
 
@@ -16,7 +16,7 @@ class InteropJS {
       script.onload = function() {
         console.log('Script loaded');
         Initialize();
-       DisplayPublicData();
+     return  DisplayPublicData();
 
       };
       document.body.appendChild(script);

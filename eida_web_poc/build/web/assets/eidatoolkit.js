@@ -3508,6 +3508,7 @@ var readPublicDataCB = function (response, error) {
   if (error === null) {
     displayData(response, "readPublicDataDiv");
     console.log('public data', response);
+    return response;
     if (response.xmlString !== null && response.xmlString !== undefined) {
       document.getElementById("vxs").style.display = "block";
       self.verifyxmldata = response.xmlString;
@@ -5598,32 +5599,7 @@ function PrepareRequest(callback) {
  */
 function displayData(response, div) {
   console.log(response);
-  document.getElementById("IDNumber_data").innerHTML =
-    response.iDNumber.fontsize(3);
-  document.getElementById("CardNumberdata").innerHTML =
-    response.cardNumber.fontsize(3);
-  document.getElementById("Cardsl_no").innerHTML =
-    response.cardSerialNumber.fontsize(3);
-  document.getElementById("pubphoto").src =
-    "data:image/bmp;base64," + response.cardHolderPhoto;
-  dataBindDom(response.nonModifiablePublicData, "nmd-DataTable");
-  dataBindDom(response.modifiablePublicData, "md-DataTable");
 
-  if (!self.IsNfc) {
-    dataBindDom(response.homeAddress, "hm_address_data");
-    dataBindDom(response.workAddress, "wrk_address_data");
-  } else {
-    var address1 = document.getElementById("hm_address_data");
-    var address2 = document.getElementById("wrk_address_data");
-    address1.style.display = "none";
-    address2.style.display = "none";
-    address1.style.display = null;
-    address2.style.display = null;
-  }
-  showDiv("readPublicDataDiv");
-  if (self.IsNfc) {
-    nfcMenu();
-  }
 }
 
 function dataBindDom(response, id) {
